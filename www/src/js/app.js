@@ -14,8 +14,9 @@ class BoilerplateScene extends React.Component {
     this.state = {
       color: 'red'
     };
-    // Microphone.startRecording();
+    
     Recognizer.startRecognition();
+    GamepadController.init();
   }
 
   changeColor = () => {
@@ -29,6 +30,8 @@ class BoilerplateScene extends React.Component {
     return (
       <Scene>
         <Camera><Cursor/></Camera>
+        <a-asset-item id="lego-obj" src="../models/lego/LEGO_Man.obj" width="1" height="2"></a-asset-item>
+        <a-asset-item id="lego-mtl" src="../models/lego/LEGO_Man.mtl" width="1" height="2"></a-asset-item>
 
         <Sky/>
 
@@ -41,6 +44,8 @@ class BoilerplateScene extends React.Component {
                 position="0 0 -5">
           <Animation attribute="rotation" dur="5000" repeat="indefinite" to="0 360 360"/>
         </Entity>
+
+        <a-entity class="move-to-clickable" id="lego-man" obj-model="obj: #lego-obj; mtl: #lego-mtl" geometry="width: 1; height: 1" position="-4 0 4"></a-entity>
       </Scene>
     );
   }

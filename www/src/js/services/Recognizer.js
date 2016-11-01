@@ -28,14 +28,21 @@ var Recognizer = (function(){
 		    }
 		]);
 
-		artyom.initialize({
-		    lang:"en-GB", // GreatBritain english
-		    continuous:true, // Listen forever
-		    soundex:true,// Use the soundex algorithm to increase accuracy
-		    debug:true, // Show messages in the console
-		    executionKeyword: "and do it now",
-		    listen:true // Start to listen commands !
-		});
+		setTimeout(function(){
+			artyom.initialize({
+			    lang:"en-GB", // GreatBritain english
+			    continuous:true, // Listen forever
+			    soundex:true,// Use the soundex algorithm to increase accuracy
+			    debug:true, // Show messages in the console
+			    executionKeyword: "and do it now",
+			    listen:true // Start to listen commands !
+			});
+		}, 250);
+
+		setTimeout(function(){
+		    artyom.fatality();
+		}, 5000);
+
 	}
 
 	return {
