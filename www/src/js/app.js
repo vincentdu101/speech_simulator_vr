@@ -41,11 +41,6 @@ class BoilerplateScene extends React.Component {
                 position="0 0 -5">
           <Animation attribute="rotation" dur="5000" repeat="indefinite" to="0 360 360"/>
         </Entity>
-
-        // <a-assets>
-        //     <a-asset-item id="ihop" src="/models/ihop/model.dae"></a-asset-item>
-        // </a-assets>
-        // <Entity collada-model="#ihop"></Entity>
       </Scene>
     );
   }
