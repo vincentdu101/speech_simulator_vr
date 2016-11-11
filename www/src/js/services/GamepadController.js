@@ -3,7 +3,7 @@ var GamepadController = (function(){
 	var gamepad;
 
 	function init() {
-		if (!!navigator.getGamepads) {
+		if (gamepadAvailable()) {
 			window.addEventListener("gamepadconnected", function(e) {
 	      console.log("Gamepad connected at index %d: %s. %d buttons, %d axes.",
 	      e.gamepad.index, e.gamepad.id,
@@ -18,6 +18,16 @@ var GamepadController = (function(){
 
 	    setInterval(function() {gameLoop()}, 100);
 		}
+	}
+
+	function gamepadAvailable() {
+		var gamepads = navigator.getGamepads();
+		for (var i = 0; i < Object.keys(gamepads).length; i++) {
+			if (!!gamepads[i]) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	function buttonPressed(button) {

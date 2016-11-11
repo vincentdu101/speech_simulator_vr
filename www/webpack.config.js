@@ -36,7 +36,8 @@ module.exports = {
   },
   module: {
     noParse: [
-      /node_modules\/aframe\/dist\/aframe.js/
+      /node_modules\/aframe\/dist\/aframe.js/,
+      /node_modules\/aframe-physics-components\/dist\/aframe-physics-components.js/
     ],
     loaders: [
       {
