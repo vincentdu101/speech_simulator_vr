@@ -2,21 +2,29 @@ https://github.com/sdkcarlos/artyom.js
 
 var Recognizer = (function(){
 
-	function startRecognition() {
-		// var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition || mozSpeechRecognition || msSpeechRecognition;
-		// var recognition = new SpeechRecognition();
-		// recognition.lang = "en-US";
-		// recognition.continuous = true;
-		// recognition.maxAlternatives = 5;
-		// recognition.start();
-		// recognition.onresult = function(event) {
-		// 	console.log("you said " + event.results[0][0].transcript);
-		// }
+	var models = {};
+
+	function loadData() {
+		$.ajax({
+			url: "js/data/recognition.json",
+			success: function(data) {
+				models = data;
+			}, 
+			error: function(data) {
+				console.log(data);
+			}
+		});
+	}
+
+	function addCommands(model) {
+		var commands = Object.keys(models[model]);
+		console.log(commands);
 		artyom.addCommands([
 		    {
-		        indexes: ['Babe','Hi','is someone there'],
+		        indexes: commands,
 		        action: function(i){
-		            artyom.say("I'm sorry boobie I love you");
+		        	var command = commands[i];
+		            artyom.say(models[model][command]);
 		        }
 		    },
 		    {
@@ -27,6 +35,10 @@ var Recognizer = (function(){
 		        }
 		    }
 		]);
+	}
+
+	function startRecognition(model) {
+		addCommands(model);
 
 		setTimeout(function(){
 			artyom.initialize({
@@ -42,8 +54,12 @@ var Recognizer = (function(){
 		setTimeout(function(){
 		    artyom.fatality();
 		}, 5000);
-
+		artyom.when("ERROR",function(data){
+		    console.error(data);
+		});
 	}
+
+	loadData();
 
 	return {
 		startRecognition: startRecognition
