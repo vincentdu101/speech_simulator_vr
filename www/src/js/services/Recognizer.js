@@ -7,11 +7,12 @@ var Recognizer = (function(){
 	function loadData() {
 		$.ajax({
 			url: "js/data/recognition.json",
+			dataType: "json",
 			success: function(data) {
 				models = data;
 			}, 
-			error: function(data) {
-				console.log(data);
+			error: function(data, xhr, erro) {
+				console.log(xhr);
 			}
 		});
 	}

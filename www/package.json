@@ -5,8 +5,10 @@
   "dependencies": {
     "@google-cloud/speech": "^0.2.0",
     "aframe": "^0.3.1",
+    "aframe-bmfont-text-component": "^0.1.4",
     "aframe-physics-components": "^1.1.0",
     "aframe-react": "^2.0.0",
+    "aframe-text-component": "^0.3.0",
     "artyom.js": "^0.9.7",
     "babel-polyfill": "^6.3.14",
     "binaryjs": "^0.2.1",
